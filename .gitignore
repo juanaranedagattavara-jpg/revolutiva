@@ -1,0 +1,27 @@
+# Claude workspace internals
+.claude/
+
+# OS files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Temp files
+*.tmp
+*.lock
+
+# Next.js
+.next/
+out/
+node_modules/
+.env
+.env.local
+.env*.local
+next-env.d.ts
+npm-debug.log*
+*.tsbuildinfo
+
+# public/ is generated at dev/build time by scripts/sync-assets.mjs, which
+# copies the legacy image folders (still tracked at repo root) into place —
+# see CLAUDE.md. Keeps binary images tracked in a single location in git.
+/public/
