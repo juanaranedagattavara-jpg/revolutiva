@@ -162,16 +162,19 @@ Vía `/admin/listings/[id]` (requiere cuenta admin), o directo en Supabase (`exe
 ## Deploy
 
 - **Target**: VPS vía EasyPanel + Docker (`Dockerfile` multi-stage, `output: 'standalone'`)
-- Variables de entorno requeridas en EasyPanel: ver `.env.example`
+- `/`, `/experiencias`, `/hospedajes`, `/operadores`, `/explorar`, `/[cat]/[slug]` y `/sitemap.xml` usan el cliente público (`lib/supabase/public.ts`, sin cookies) y tienen ISR real (`revalidate = 3600`) — Next.js los prerrenderiza en build time para poder cachearlos.
+- **Variables de entorno en EasyPanel — dos grupos distintos, no confundir:**
+  - **Build args** (se inyectan en `docker build`, no solo en runtime): `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `NEXT_PUBLIC_SITE_URL`. Next.js inlinea las vars `NEXT_PUBLIC_*` en el bundle del cliente y las necesita para prerrenderizar las páginas ISR arriba — si EasyPanel solo las pasa como env vars de runtime (no como build args), el build de Docker falla o el sitio queda con URLs `undefined` en el JS del navegador (login/formularios rotos). Ver `ARG`/`ENV` en el `Dockerfile`.
+  - **Runtime env vars** (solo en el contenedor corriendo): `SUPABASE_SERVICE_ROLE_KEY`, `RESEND_API_KEY`, `REVALIDATION_SECRET` — nunca se usan en build, no hace falta pasarlas como build args.
 - Dominio: apuntar `revolutiva.travel` al servicio de EasyPanel (HTTPS automático vía Let's Encrypt)
-- El build de producción (`npm run build`) fue verificado localmente y compila sin errores; el smoke test end-to-end contra Supabase no pudo correrse desde este entorno de desarrollo por restricciones de red del sandbox (el host de Supabase no está en el allowlist de egress) — probar en el entorno real de deploy.
+- El build de producción (`npm run build`) compila sin errores localmente cuando hay credenciales válidas; el smoke test end-to-end contra Supabase (build ISR incluido) no puede correrse desde este entorno de desarrollo porque el host de Supabase no está en el allowlist de egress del sandbox — esto es una restricción del entorno de desarrollo, no del VPS real. Verificar el primer `docker build` con los build args configurados, y probar el flujo completo (home, categorías, detalle de listing, login admin, formularios) en el entorno real de deploy.
 
 ---
 
 ## Repositorio GitHub
 
-- **URL**: https://github.com/martinaraneda-creator/Revolutiva-.git
-- **Rama principal**: `main`
+- **URL**: https://github.com/juanaranedagattavara-jpg/revolutiva
+- **Rama de trabajo actual**: `claude/project-github-upload-a2kz6t`
 
 ---
 

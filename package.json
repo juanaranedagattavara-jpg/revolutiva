@@ -2,6 +2,9 @@
   "name": "revolutiva-travel",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "predev": "node scripts/sync-assets.mjs",
     "dev": "next dev",
@@ -28,5 +31,9 @@
     "sharp": "^0.35.3",
     "tsx": "^4.19.1",
     "typescript": "^5.5.3"
+  },
+  "overrides": {
+    "sharp": "^0.35.3",
+    "postcss": "^8.5.26"
   }
 }

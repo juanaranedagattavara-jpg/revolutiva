@@ -11,9 +11,10 @@ export default function PostularForm() {
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
+    const fd = new FormData(e.currentTarget);
+    if (String(fd.get("website") || "")) return; // honeypot — bot submission, silently drop
     setSending(true);
     setError("");
-    const fd = new FormData(e.currentTarget);
     const quiereMentoria = fd.get("mentoria") === "on";
     const quien = String(fd.get("quien") || "");
 
@@ -73,15 +74,23 @@ export default function PostularForm() {
 
   return (
     <form className="formstep" onSubmit={handleSubmit}>
+      <input
+        type="text"
+        name="website"
+        tabIndex={-1}
+        autoComplete="off"
+        aria-hidden="true"
+        style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px", opacity: 0 }}
+      />
       <h3>Quién eres y qué habitas</h3>
       <div className="field-row">
         <div className="field">
           <label>¿Quién eres?</label>
-          <input name="quien" required placeholder="Nombre y rol" />
+          <input name="quien" required maxLength={120} placeholder="Nombre y rol" />
         </div>
         <div className="field">
           <label>Correo de contacto</label>
-          <input type="email" name="email" required placeholder="tu@correo.com" />
+          <input type="email" name="email" required maxLength={160} placeholder="tu@correo.com" />
         </div>
       </div>
       <div className="field-row">

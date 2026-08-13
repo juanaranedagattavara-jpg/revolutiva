@@ -30,16 +30,19 @@ export async function updateSession(request: NextRequest) {
     data: { user },
   } = await supabase.auth.getUser();
 
+  // Mirrors the public.is_admin() check (raw_user_meta_data->>'role' = 'admin')
+  // so a signed-in but non-admin account can't reach the admin shell.
+  const isAdmin = user?.user_metadata?.role === "admin";
   const isAdminRoute = request.nextUrl.pathname.startsWith("/admin");
   const isLoginRoute = request.nextUrl.pathname === "/admin/login";
 
-  if (isAdminRoute && !isLoginRoute && !user) {
+  if (isAdminRoute && !isLoginRoute && !isAdmin) {
     const url = request.nextUrl.clone();
     url.pathname = "/admin/login";
     return NextResponse.redirect(url);
   }
 
-  if (isLoginRoute && user) {
+  if (isLoginRoute && isAdmin) {
     const url = request.nextUrl.clone();
     url.pathname = "/admin";
     return NextResponse.redirect(url);

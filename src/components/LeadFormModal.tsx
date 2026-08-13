@@ -17,11 +17,13 @@ export default function LeadFormModal({ listingId, listingName, anfitrion, accio
   const [email, setEmail] = useState("");
   const [telefono, setTelefono] = useState("");
   const [mensaje, setMensaje] = useState("");
+  const [website, setWebsite] = useState(""); // honeypot — real users never fill this
   const [sending, setSending] = useState(false);
   const [error, setError] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    if (website) return; // bot submission — silently drop
     setSending(true);
     setError("");
     const supabase = createClient();
@@ -71,15 +73,26 @@ export default function LeadFormModal({ listingId, listingName, anfitrion, accio
           Déjanos tus datos y te contactaremos en un máximo de 48&nbsp;h.
         </p>
         <form onSubmit={handleSubmit}>
+          <input
+            type="text"
+            name="website"
+            value={website}
+            onChange={(e) => setWebsite(e.target.value)}
+            tabIndex={-1}
+            autoComplete="off"
+            aria-hidden="true"
+            style={{ position: "absolute", left: "-9999px", width: "1px", height: "1px", opacity: 0 }}
+          />
           <div className="field">
             <label>Nombre</label>
-            <input required value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Tu nombre" />
+            <input required maxLength={120} value={nombre} onChange={(e) => setNombre(e.target.value)} placeholder="Tu nombre" />
           </div>
           <div className="field">
             <label>Email</label>
             <input
               type="email"
               required
+              maxLength={160}
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="tu@correo.com"
@@ -87,11 +100,12 @@ export default function LeadFormModal({ listingId, listingName, anfitrion, accio
           </div>
           <div className="field">
             <label>Teléfono <span className="hint">(opcional)</span></label>
-            <input value={telefono} onChange={(e) => setTelefono(e.target.value)} placeholder="+56 9…" />
+            <input maxLength={40} value={telefono} onChange={(e) => setTelefono(e.target.value)} placeholder="+56 9…" />
           </div>
           <div className="field">
             <label>Mensaje <span className="hint">(opcional)</span></label>
             <textarea
+              maxLength={2000}
               value={mensaje}
               onChange={(e) => setMensaje(e.target.value)}
               placeholder="Cuéntanos fechas, número de personas o cualquier detalle…"

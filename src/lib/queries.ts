@@ -1,8 +1,8 @@
-import { createClient } from "@/lib/supabase/server";
+import { createPublicClient } from "@/lib/supabase/public";
 import type { Listing, ListingCategory } from "@/lib/types";
 
 export async function getPublishedListings(): Promise<Listing[]> {
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   const { data, error } = await supabase
     .from("listings")
     .select("*")
@@ -13,7 +13,7 @@ export async function getPublishedListings(): Promise<Listing[]> {
 }
 
 export async function getListingsByCategory(cat: ListingCategory): Promise<Listing[]> {
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   const { data, error } = await supabase
     .from("listings")
     .select("*")
@@ -25,7 +25,7 @@ export async function getListingsByCategory(cat: ListingCategory): Promise<Listi
 }
 
 export async function getListingBySlug(slug: string): Promise<Listing | null> {
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   const { data, error } = await supabase
     .from("listings")
     .select("*")
@@ -42,20 +42,27 @@ export async function getRelatedListings(
   cat: ListingCategory,
   limit = 3
 ): Promise<Listing[]> {
-  const supabase = await createClient();
-  const { data, error } = await supabase
-    .from("listings")
-    .select("*")
-    .eq("published", true)
-    .neq("id", id)
-    .or(`pais.eq.${pais},category.eq.${cat}`)
-    .limit(limit);
-  if (error) throw error;
-  return data as Listing[];
+  const supabase = createPublicClient();
+  const [byCountry, byCategory] = await Promise.all([
+    supabase.from("listings").select("*").eq("published", true).neq("id", id).eq("pais", pais).limit(limit),
+    supabase.from("listings").select("*").eq("published", true).neq("id", id).eq("category", cat).limit(limit),
+  ]);
+  if (byCountry.error) throw byCountry.error;
+  if (byCategory.error) throw byCategory.error;
+
+  const seen = new Set<string>();
+  const merged: Listing[] = [];
+  for (const item of [...(byCountry.data ?? []), ...(byCategory.data ?? [])] as Listing[]) {
+    if (seen.has(item.id)) continue;
+    seen.add(item.id);
+    merged.push(item);
+    if (merged.length >= limit) break;
+  }
+  return merged;
 }
 
 export async function getFeaturedListings(limit = 3): Promise<Listing[]> {
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   const { data, error } = await supabase
     .from("listings")
     .select("*")
@@ -68,7 +75,7 @@ export async function getFeaturedListings(limit = 3): Promise<Listing[]> {
 }
 
 export async function getAllCountries(): Promise<string[]> {
-  const supabase = await createClient();
+  const supabase = createPublicClient();
   const { data, error } = await supabase
     .from("listings")
     .select("pais")

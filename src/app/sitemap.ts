@@ -5,7 +5,14 @@ import { getPublishedListings } from "@/lib/queries";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://revolutiva.travel";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const listings = await getPublishedListings();
+  // Best-effort: a transient Supabase error shouldn't fail the whole build/
+  // deploy over a crawler-facing file — fall back to the static routes.
+  let listings: Awaited<ReturnType<typeof getPublishedListings>> = [];
+  try {
+    listings = await getPublishedListings();
+  } catch (error) {
+    console.error("sitemap: failed to load listings, falling back to static routes only", error);
+  }
 
   const staticRoutes: MetadataRoute.Sitemap = [
     "",
