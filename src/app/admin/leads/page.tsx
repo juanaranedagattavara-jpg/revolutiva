@@ -39,6 +39,16 @@ export default async function AdminLeadsPage() {
                   <b>Tel:</b> {l.telefono}
                 </span>
               )}
+              {l.fecha_viaje && (
+                <span>
+                  <b>Fecha de viaje:</b> {l.fecha_viaje}
+                </span>
+              )}
+              {l.viajeros != null && (
+                <span>
+                  <b>Viajeros:</b> {l.viajeros}
+                </span>
+              )}
             </div>
             {l.mensaje && (
               <p className="muted" style={{ marginTop: "8px", fontSize: ".9rem" }}>

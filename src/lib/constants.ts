@@ -32,38 +32,44 @@ export interface RDimMeta {
   name: string;
   q: string;
   desc: string;
+  principios: string[];
 }
 
 export const R_DIMS: RDimMeta[] = [
   {
     code: "R1",
-    name: "Reconexión personal",
-    q: "¿Qué cambia o se despierta en el viajero?",
-    desc: "Bienestar, presencia, aprendizaje, transformación y sentido.",
+    name: "Reconexión",
+    q: "¿Cuál es la relación del proyecto con su identidad y propósito profundo?",
+    desc: "La relación de la organización consigo misma: identidad, propósito, coherencia ética y estética, consciencia sistémica y capacidad de generar experiencias que transforman al viajero.",
+    principios: ["Identidad y propósito", "Coherencia ética y estética", "Percepción sistémica", "Experiencias profundas y trascendentes"],
   },
   {
     code: "R2",
-    name: "Relaciones comunitarias",
-    q: "¿A quién fortalece esta experiencia en el territorio?",
-    desc: "Cultura viva, economía local, acuerdos y colaboración.",
+    name: "Relaciones",
+    q: "¿Cómo se relaciona el proyecto con comunidades, colaboradores y actores del territorio?",
+    desc: "La relación con personas, comunidades, colaboradores, proveedores e instituciones. Colaboración, co-creación, sentir del lugar y redes de valor territorial.",
+    principios: ["Colaboración y co-creación", "Sentir del lugar", "Flow, movimiento y redes", "Abundancia, nutrición y reproducción"],
   },
   {
     code: "R3",
-    name: "Regeneración de naturaleza",
-    q: "¿Qué sistema natural cuida o mejora?",
-    desc: "Agua, suelo, biodiversidad, residuos, energía, restauración.",
+    name: "Revitalización",
+    q: "¿Cómo contribuye el proyecto a la vitalidad ecológica del territorio?",
+    desc: "La relación con la naturaleza y su contribución a los sistemas vivos. Cuidado del agua, los suelos, los ecosistemas, la infraestructura y el bienestar ecológico del territorio.",
+    principios: ["Conexión con la naturaleza", "Aguas vivas", "Suelos sanos y carbono", "Bienestar ecológico", "Infraestructura y estética"],
   },
   {
     code: "R4",
-    name: "Ritmos del lugar",
-    q: "¿Cuándo y cómo es sano visitar este lugar?",
-    desc: "Calendario regenerativo, temporadas sensibles, ciclos culturales.",
+    name: "Ritmos",
+    q: "¿Cómo se alinea el proyecto con los flujos y ciclos del lugar?",
+    desc: "La relación con los ritmos naturales, culturales y bioculturales del lugar: temporadas, calendarios, tiempos del territorio y flujos de movimiento regenerativo.",
+    principios: ["Ritmo", "Flow, movimiento y redes"],
   },
   {
     code: "R5",
-    name: "Reciprocidad y evolución",
-    q: "¿Qué devuelve el proyecto y cómo evoluciona?",
-    desc: "Devolución, mejora continua, mentoría y aprendizaje.",
+    name: "Reciprocidad",
+    q: "¿Qué devuelve el proyecto al territorio y cómo evoluciona?",
+    desc: "La capacidad de devolver valor al territorio, distribuir beneficios más allá de la organización, gestionar la huella energética y crecer de forma saludable y equilibrada.",
+    principios: ["Abundancia, nutrición y reproducción", "Metabolismo, crecimiento y desarrollo", "Energía y huella"],
   },
 ];
 

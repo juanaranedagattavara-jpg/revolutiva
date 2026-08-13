@@ -9,11 +9,11 @@ export const metadata: Metadata = {
 };
 
 const EJEMPLOS: Record<string, string[]> = {
-  R1: ["espacios de silencio o contemplación", "prácticas de bienestar", "interpretación profunda", "reflexión guiada", "ritmo humano", "diseño de experiencia transformadora"],
-  R2: ["empleo local", "compra local", "acuerdos comunitarios", "participación de familias o comunidades", "rescate de oficios", "gobernanza local", "colaboración comunitaria"],
-  R3: ["restauración ecológica", "cuidado del agua", "protección de biodiversidad", "manejo de residuos", "eficiencia energética", "agricultura regenerativa", "límites de carga"],
-  R4: ["calendario regenerativo", "temporadas sensibles", "festividades locales", "ciclos agrícolas", "épocas de descanso del territorio", "experiencias estacionales"],
-  R5: ["aporte directo al territorio", "contribución a proyectos locales", "plan de mejora", "escucha de viajeros y comunidad", "mentoría activa", "transparencia en impactos"],
+  R1: ["propósito claro y auténtico", "identidad del anfitrión", "coherencia ética y estética", "consciencia sistémica del territorio", "experiencias de transformación personal", "reflexión guiada", "diseño de experiencia profunda", "presencia y ritmo humano"],
+  R2: ["colaboración con comunidades locales", "co-creación con actores del territorio", "redes de proveedores locales", "identidad y sentir del lugar", "participación de familias", "rescate y transmisión de saberes", "gobernanza compartida", "flujos de valor en el territorio"],
+  R3: ["restauración de ecosistemas", "protección y cuidado del agua", "suelos sanos y carbono", "biodiversidad activa", "manejo regenerativo de residuos", "eficiencia y energía limpia", "agricultura y ganadería regenerativa", "límites de carga y capacidad"],
+  R4: ["calendario regenerativo del lugar", "temporadas sensibles del ecosistema", "festividades y ciclos culturales", "épocas de descanso del territorio", "flujos de movimiento consciente", "experiencias estacionales auténticas"],
+  R5: ["devolución concreta al territorio", "distribución de beneficios locales", "gestión de la huella energética", "metabolismo sano del proyecto", "mejora continua con escucha activa", "mentoría y aprendizaje colectivo", "transparencia en impactos y evolución"],
 };
 
 const SAMPLE_R = { R1: "desarrollo", R2: "enraizado", R3: "inicial", R4: "desarrollo", R5: "desarrollo" } as const;
@@ -44,7 +44,17 @@ export default function IndicadoresPage() {
               <div>
                 <h4 style={{ fontSize: "1.2rem", marginTop: 0 }}>{d.name}</h4>
                 <p style={{ fontStyle: "italic", color: "var(--forest)" }}>{d.q}</p>
-                <p style={{ marginBottom: "10px" }}>{d.desc}</p>
+                <p style={{ marginBottom: "12px" }}>{d.desc}</p>
+                <div style={{ display: "flex", flexWrap: "wrap", gap: "6px", marginBottom: "12px" }}>
+                  {d.principios.map((p) => (
+                    <span
+                      key={p}
+                      style={{ background: "var(--forest)", color: "#fff", fontSize: ".78rem", padding: "3px 10px", borderRadius: "20px", fontWeight: 500 }}
+                    >
+                      {p}
+                    </span>
+                  ))}
+                </div>
                 <div className="taglist">
                   {EJEMPLOS[d.code].map((e) => (
                     <span className="tag" key={e}>
@@ -57,10 +67,17 @@ export default function IndicadoresPage() {
           ))}
         </div>
 
-        <div className="detail-grid" style={{ marginTop: "50px" }}>
+        <div style={{ marginTop: "56px", background: "var(--bg-2)", borderRadius: "var(--radius)", padding: "32px", display: "grid", gridTemplateColumns: "1fr 320px", gap: "40px", alignItems: "start" }}>
           <div>
-            <h3>Cómo se ve en una ficha</h3>
-            <p className="muted">Ejemplo de un proyecto en transición y su próxima mejora sugerida.</p>
+            <p style={{ margin: "0 0 20px", fontSize: ".97rem", lineHeight: 1.7, color: "var(--ink-soft)" }}>
+              Proceso acompañado y verificado por la IGTR mediante un diagnóstico basado en FlowMap,
+              metodología regenerativa para organizaciones vivas, complementado con revisión de pares y
+              curaduría especializada. Más que evaluar, invita a recorrer un proceso vivo y continuo de
+              evolución hacia la regeneración.
+            </p>
+            <a href="https://www.turismoregenerativo.org" target="_blank" rel="noopener" className="btn btn-ghost btn-sm">
+              Sitio IGTR ↗
+            </a>
           </div>
           <div>
             <RPanel R={SAMPLE_R} />

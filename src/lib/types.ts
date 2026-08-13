@@ -122,6 +122,8 @@ export interface Lead {
   email: string;
   telefono: string | null;
   mensaje: string | null;
+  fecha_viaje: string | null;
+  viajeros: number | null;
   status: LeadStatus;
   notas_admin: string | null;
   source_url: string | null;
@@ -144,6 +146,8 @@ export interface Postulation {
   ritmos: string | null;
   evidencias: string | null;
   fortalecer: string | null;
+  web: string | null;
+  instagram: string | null;
   quiere_mentoria: boolean;
   status: PostulationStatus;
   notas_admin: string | null;

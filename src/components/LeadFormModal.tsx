@@ -16,6 +16,8 @@ export default function LeadFormModal({ listingId, listingName, anfitrion, accio
   const [nombre, setNombre] = useState("");
   const [email, setEmail] = useState("");
   const [telefono, setTelefono] = useState("");
+  const [fechaViaje, setFechaViaje] = useState("");
+  const [viajeros, setViajeros] = useState("");
   const [mensaje, setMensaje] = useState("");
   const [website, setWebsite] = useState(""); // honeypot — real users never fill this
   const [sending, setSending] = useState(false);
@@ -34,6 +36,8 @@ export default function LeadFormModal({ listingId, listingName, anfitrion, accio
       nombre,
       email,
       telefono: telefono || null,
+      fecha_viaje: fechaViaje || null,
+      viajeros: viajeros ? Number(viajeros) : null,
       mensaje: mensaje || null,
       source_url: typeof window !== "undefined" ? window.location.href : null,
     });
@@ -101,6 +105,14 @@ export default function LeadFormModal({ listingId, listingName, anfitrion, accio
           <div className="field">
             <label>Teléfono <span className="hint">(opcional)</span></label>
             <input maxLength={40} value={telefono} onChange={(e) => setTelefono(e.target.value)} placeholder="+56 9…" />
+          </div>
+          <div className="field">
+            <label>Fecha aproximada de viaje <span className="hint">(opcional)</span></label>
+            <input maxLength={60} value={fechaViaje} onChange={(e) => setFechaViaje(e.target.value)} placeholder="Ej: octubre 2026" />
+          </div>
+          <div className="field">
+            <label>Número de viajeros <span className="hint">(opcional)</span></label>
+            <input type="number" min={1} value={viajeros} onChange={(e) => setViajeros(e.target.value)} placeholder="Ej: 2" />
           </div>
           <div className="field">
             <label>Mensaje <span className="hint">(opcional)</span></label>

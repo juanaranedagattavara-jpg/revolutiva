@@ -37,6 +37,18 @@ export default async function AdminPostulacionesPage() {
                 <b>Oferta:</b> {p.oferta}
               </p>
             )}
+            {(p.web || p.instagram) && (
+              <p className="muted" style={{ fontSize: ".85rem", display: "flex", gap: "14px", flexWrap: "wrap" }}>
+                {p.web && /^https?:\/\//i.test(p.web) ? (
+                  <a href={p.web} target="_blank" rel="noopener noreferrer">
+                    {p.web} ↗
+                  </a>
+                ) : (
+                  p.web
+                )}
+                {p.instagram && <span>{p.instagram}</span>}
+              </p>
+            )}
           </div>
         ))}
         {(!postulations || postulations.length === 0) && <p className="muted">Aún no hay postulaciones.</p>}

@@ -33,6 +33,8 @@ export default function PostularForm() {
       ritmos: String(fd.get("ritmos") || "") || null,
       evidencias: String(fd.get("evidencias") || "") || null,
       fortalecer: String(fd.get("fortalecer") || "") || null,
+      web: String(fd.get("web") || "") || null,
+      instagram: String(fd.get("instagram") || "") || null,
       quiere_mentoria: quiereMentoria,
     });
 
@@ -125,6 +127,16 @@ export default function PostularForm() {
       <div className="field">
         <label>Describe tu experiencia, hospedaje o guiado</label>
         <textarea name="oferta" required />
+      </div>
+      <div className="field-row">
+        <div className="field">
+          <label>Página web <span className="hint">(opcional)</span></label>
+          <input type="url" name="web" maxLength={200} placeholder="https://tuproyecto.com" />
+        </div>
+        <div className="field">
+          <label>Instagram <span className="hint">(opcional)</span></label>
+          <input name="instagram" maxLength={100} placeholder="@tuproyecto" />
+        </div>
       </div>
 
       <div className="divider" style={{ margin: "24px 0" }} />
