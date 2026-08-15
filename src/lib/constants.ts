@@ -80,8 +80,8 @@ export const NIVELES: Record<number, { name: string; cls: string }> = {
 };
 
 export const ST: Record<RState, string> = {
-  inicial: "Inicial",
-  desarrollo: "En desarrollo",
+  inicial: "En incubación",
+  desarrollo: "En transición",
   enraizado: "Enraizado",
 };
 
@@ -98,9 +98,9 @@ export interface CatMeta {
 export const CAT_META: Record<ListingCategory, CatMeta> = {
   experiencia: {
     slug: "experiencias",
-    plural: "Peregrinación / Naturaleza",
-    singular: "Viaje",
-    tag: "Viaje",
+    plural: "Experiencias",
+    singular: "Experiencia",
+    tag: "Experiencia",
     intro:
       "Viajes, peregrinaciones y rutas de naturaleza diseñadas para reconectar con el territorio, su cultura y sus ciclos.",
     foto: "/Llama Trek/LLama 1.webp",

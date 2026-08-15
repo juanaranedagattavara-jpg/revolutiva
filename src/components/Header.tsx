@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useState } from "react";
 
 const LINKS = [
-  { href: "/experiencias", label: "Peregrinación / Naturaleza" },
+  { href: "/experiencias", label: "Experiencias" },
   { href: "/hospedajes", label: "Hospedaje" },
   { href: "/operadores", label: "Operadores" },
   { href: "/principios", label: "Principios IGTR" },
@@ -20,7 +20,6 @@ export default function Header() {
     <header className="nav">
       <div className="wrap nav-inner">
         <Link href="/" className="brand" onClick={() => setOpen(false)}>
-          <div className="logo" />
           <div>
             <b>
               REVOLUTIVA<span style={{ color: "var(--terra)" }}>.TRAVEL</span>

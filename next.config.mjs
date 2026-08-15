@@ -13,6 +13,14 @@ const nextConfig = {
         protocol: 'https',
         hostname: 'images.unsplash.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'caminaconsultores.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'turismoregenerativo.org',
+      },
     ],
   },
   async headers() {

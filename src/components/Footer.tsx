@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
@@ -7,7 +8,6 @@ export default function Footer() {
         <div className="foot-grid">
           <div>
             <Link href="/" className="brand" style={{ marginBottom: "16px" }}>
-              <div className="logo" />
               <div>
                 <b style={{ color: "#f1ede2" }}>
                   REVOLUTIVA<span style={{ color: "var(--terra)" }}>.TRAVEL</span>
@@ -19,17 +19,35 @@ export default function Footer() {
               Viajes que regeneran relaciones: contigo, con las comunidades y con la naturaleza.
               Una red viva de lugares, anfitriones y experiencias con sentido.
             </p>
-            <p style={{ fontSize: ".85rem" }}>
-              <a href="https://turismoregenerativo.org/" target="_blank" rel="noopener">
-                turismoregenerativo.org ↗
+            <p style={{ fontSize: ".78rem", color: "#8c9480", marginBottom: "10px" }}>Con el respaldo de</p>
+            <div style={{ display: "flex", alignItems: "center", gap: "20px", flexWrap: "wrap" }}>
+              <a href="https://www.caminaconsultores.com" target="_blank" rel="noopener" title="Camina Consultores">
+                <Image
+                  src="https://caminaconsultores.com/wp-content/uploads/2025/11/Logo-Camina.png"
+                  alt="Camina Consultores"
+                  width={160}
+                  height={32}
+                  className="footer-partner-logo"
+                  style={{ width: "auto", height: "32px" }}
+                />
               </a>
-            </p>
+              <a href="https://turismoregenerativo.org" target="_blank" rel="noopener" title="Iniciativa Global de Turismo Regenerativo">
+                <Image
+                  src="https://turismoregenerativo.org/v4/wp-content/uploads/elementor/thumbs/Logo-TR-1000-qz56jyib1wtdhze387v6ovpgw6mkrqdo09uazlxkwe.png"
+                  alt="Turismo Regenerativo IGTR"
+                  width={160}
+                  height={32}
+                  className="footer-partner-logo"
+                  style={{ width: "auto", height: "32px" }}
+                />
+              </a>
+            </div>
           </div>
           <div>
             <h5>Explorar</h5>
             <ul>
               <li>
-                <Link href="/experiencias">Peregrinación / Naturaleza</Link>
+                <Link href="/experiencias">Experiencias</Link>
               </li>
               <li>
                 <Link href="/hospedajes">Hospedaje</Link>
@@ -81,7 +99,7 @@ export default function Footer() {
         </div>
         <div className="foot-bottom">
           <span>© {new Date().getFullYear()} REVOLUTIVA.TRAVEL · Iniciativa Global de Turismo Regenerativo</span>
-          <span>Curaduría · Transparencia · Mejora continua</span>
+          <span>Curaduría · Verificación · Evolución continua</span>
         </div>
       </div>
     </footer>

@@ -305,6 +305,8 @@ footer a{color:#c9cfbf}footer a:hover{color:#fff}
 .foot-grid li{margin-bottom:9px;font-size:.9rem;cursor:pointer}
 .foot-bottom{border-top:1px solid #3a4233;padding-top:22px;display:flex;justify-content:space-between;
   flex-wrap:wrap;gap:10px;font-size:.82rem;color:#8c9480}
+.footer-partner-logo{opacity:.75;filter:brightness(0) invert(1);transition:.2s}
+.footer-partner-logo:hover{opacity:1}
 
 /* breadcrumb */
 .crumb{font-size:.85rem;color:var(--muted);margin:24px 0 0;cursor:pointer}

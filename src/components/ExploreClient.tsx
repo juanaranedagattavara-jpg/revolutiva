@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { CAT_META, RELACIONES, R_DIMS, TIPOS_EXP } from "@/lib/constants";
+import { RELACIONES, R_DIMS, TIPOS_EXP } from "@/lib/constants";
 import { listingPrice, type Listing } from "@/lib/types";
 import ListingCard from "./ListingCard";
 
@@ -78,7 +78,16 @@ export default function ExploreClient({ items, initialTipo }: { items: Listing[]
                 Limpiar
               </button>
             </div>
-            <FGroup title="Categoría" active={filters.cat} onToggle={(v) => toggle("cat", v)} options={Object.entries(CAT_META).map(([v, m]) => ({ v, l: m.plural }))} />
+            <FGroup
+              title="Categoría"
+              active={filters.cat}
+              onToggle={(v) => toggle("cat", v)}
+              options={[
+                { v: "experiencia", l: "Peregrinación / Naturaleza" },
+                { v: "hospedaje", l: "Hospedaje" },
+                { v: "guiado", l: "Operadores" },
+              ]}
+            />
             <FGroup title="Relación dominante" active={filters.rel} onToggle={(v) => toggle("rel", v)} options={Object.entries(RELACIONES).map(([v, l]) => ({ v, l }))} />
             <FGroup title="Nivel de madurez" active={filters.nivel} onToggle={(v) => toggle("nivel", v)} options={[{ v: "1", l: "Incubación" }, { v: "2", l: "Transición" }, { v: "3", l: "Enraizado" }]} />
             <FGroup title="Indicadores R fuertes" active={filters.r} onToggle={(v) => toggle("r", v)} options={R_DIMS.map((d) => ({ v: d.code, l: `${d.code} ${d.name.split(" ")[0]}` }))} />
