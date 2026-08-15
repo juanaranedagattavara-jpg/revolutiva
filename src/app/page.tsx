@@ -20,7 +20,7 @@ export default async function HomePage() {
           <Image src={HERO_IMG} alt="" fill priority sizes="100vw" style={{ objectFit: "cover" }} />
         </div>
         <div className="wrap hero-inner">
-          <div className="eyebrow">Una iniciativa de la IGTR</div>
+          <div className="eyebrow">evolucionar viajando</div>
           <h1>
             Viajes que regeneran
             <br />

@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     template: "%s · REVOLUTIVA.TRAVEL",
   },
   description:
-    "Marketplace curado de experiencias, hospedajes y guiados regenerativos. Una iniciativa de la IGTR.",
+    "Marketplace curado de experiencias, hospedajes y guiados regenerativos. evolucionar viajando.",
   openGraph: {
     siteName: "REVOLUTIVA.TRAVEL",
     type: "website",

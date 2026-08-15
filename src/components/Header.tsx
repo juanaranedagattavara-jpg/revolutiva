@@ -25,7 +25,7 @@ export default function Header() {
             <b>
               REVOLUTIVA<span style={{ color: "var(--terra)" }}>.TRAVEL</span>
             </b>
-            <small>Una iniciativa de la IGTR</small>
+            <small>evolucionar viajando</small>
           </div>
         </Link>
         <nav className={`nav-links${open ? " open" : ""}`}>

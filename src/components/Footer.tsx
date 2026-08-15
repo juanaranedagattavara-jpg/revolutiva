@@ -12,7 +12,7 @@ export default function Footer() {
                 <b style={{ color: "#f1ede2" }}>
                   REVOLUTIVA<span style={{ color: "var(--terra)" }}>.TRAVEL</span>
                 </b>
-                <small style={{ color: "#8c9480" }}>Una iniciativa de la IGTR</small>
+                <small style={{ color: "#8c9480" }}>evolucionar viajando</small>
               </div>
             </Link>
             <p style={{ fontSize: ".92rem", maxWidth: "340px" }}>
