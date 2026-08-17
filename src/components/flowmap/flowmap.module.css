@@ -132,6 +132,7 @@
 }
 .footerLogos { display: flex; align-items: center; justify-content: center; gap: 2rem; margin-bottom: 1.1rem; flex-wrap: wrap; }
 .footerLogo { height: 40px; width: auto; object-fit: contain; }
+.footerLogoRevolutiva { height: 28px; }
 .footerCredit { max-width: 580px; margin: 0 auto .6rem; font-size: .85rem; line-height: 1.6; color: var(--ink-soft); }
 .footerLinks { font-size: .76rem; letter-spacing: .04em; color: var(--ink-soft); text-transform: uppercase; }
 
@@ -196,10 +197,10 @@
 .infoTable .elementoCell .name { font-weight: 700; font-style: normal; }
 
 /* ---------- R cards (intro) ---------- */
-.rGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin: 1.5rem 0 2rem; }
-.rCard { border-radius: var(--radius); padding: 1.25rem; border-top: 6px solid; background: var(--paper); box-shadow: var(--shadow); }
-.rCard h4 { margin-bottom: .4rem; font-size: 1.05rem; }
-.rCard p { font-size: .88rem; color: var(--ink-soft); margin-bottom: 0; }
+.rGrid { display: grid; grid-template-columns: repeat(5, 1fr); gap: .85rem; margin: 1.5rem 0 2rem; align-items: stretch; }
+.rCard { border-radius: var(--radius); padding: 1.1rem; border-top: 6px solid; background: var(--paper); box-shadow: var(--shadow); }
+.rCard h4 { margin-bottom: .4rem; font-size: 1rem; }
+.rCard p { font-size: .82rem; color: var(--ink-soft); margin-bottom: 0; }
 
 .flowDiagram { background: var(--bg-alt); border: 1px solid var(--border); border-radius: var(--radius); padding: 1.5rem; text-align: center; margin: 1.5rem 0 2rem; font-size: .95rem; color: var(--ink-soft); }
 .flowDiagram strong { color: var(--ink); }
@@ -222,6 +223,7 @@
 
 /* ---------- Frase de cierre (intro) ---------- */
 .closingPhraseWrap { text-align: center; padding: 3rem 1.5rem 1rem; margin-top: 1rem; }
+.closingPhraseWrap .noticeList { text-align: left; max-width: 640px; margin: 0 auto; }
 .closingPhrase {
   font-family: "Segoe Script", "Bradley Hand", "Brush Script MT", cursive;
   font-size: 2.1rem; line-height: 1.4; color: var(--tierra-dark);
@@ -342,6 +344,7 @@
 .resultsPanel.active { display: block; }
 
 .resultGrid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 1.5rem; }
+.resultGridElementos { grid-template-columns: repeat(2, 1fr); }
 .resultCard { border-radius: var(--radius); padding: 1.4rem; box-shadow: var(--shadow); background: var(--paper); border-top: 6px solid var(--border); cursor: pointer; }
 .resultCard.fuego { border-top-color: var(--fuego); }
 .resultCard.aire { border-top-color: var(--aire); }
@@ -452,6 +455,10 @@
 .matrizRowAgua { background: var(--agua-light); }
 .matrizRowTierra { background: var(--tierra-light); }
 
+@media (max-width: 900px) {
+  .rGrid { grid-template-columns: repeat(3, 1fr); }
+}
+
 @media (max-width: 640px) {
   .appHeaderInner { flex-direction: column; text-align: center; }
   .mainNav { flex-direction: column; margin-top: -.5rem; }
@@ -461,6 +468,8 @@
   .navButtons .rightGroup { width: 100%; justify-content: stretch; }
   .navButtons .rightGroup .btn { flex: 1; }
   .elementosGrid { grid-template-columns: 1fr; }
+  .rGrid { grid-template-columns: 1fr; }
+  .resultGridElementos { grid-template-columns: 1fr; }
 }
 
 /* ---------- PRINT ---------- */

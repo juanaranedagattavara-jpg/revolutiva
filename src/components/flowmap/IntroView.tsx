@@ -12,17 +12,6 @@ export default function IntroView({ onComenzar }: { onComenzar: () => void }) {
         <p>Desde esta perspectiva, una organización no es entendida únicamente como una estructura destinada a producir servicios o generar ingresos. Es observada como una Organización Viva que posee identidad, relaciones, procesos y recursos, y que forma parte de un territorio igualmente vivo.</p>
         <p>La mirada bioantropocéntrica comprende al ser humano y a la naturaleza como una totalidad interdependiente. Las cualidades presentes en la naturaleza también se manifiestan en las personas, las comunidades y las organizaciones.</p>
         <p>El FlowMap utiliza los cuatro elementos —tierra, agua, aire y fuego— como una estructura para observar las diferentes dimensiones de la vida organizacional.</p>
-
-        <div className={styles.noticeList}>
-          <ul>
-            <li>No hay respuestas correctas o incorrectas.</li>
-            <li>La herramienta no constituye una certificación.</li>
-            <li>El propósito es reconocer fortalezas, contradicciones, brechas y posibilidades de evolución.</li>
-            <li>Las respuestas deben reflejar la situación actual y no solamente las aspiraciones de la organización.</li>
-            <li>Se recomienda realizar el ejercicio individualmente y posteriormente contrastarlo con equipos, colaboradores y actores territoriales.</li>
-            <li>Se recomienda repetir el diagnóstico al menos una vez al año.</li>
-          </ul>
-        </div>
       </div>
 
       <p className={styles.nivelesEyebrow} style={{ marginTop: "2.5rem" }}>Génesis y método FlowMap</p>
@@ -132,10 +121,21 @@ export default function IntroView({ onComenzar }: { onComenzar: () => void }) {
       </section>
 
       <div className={styles.closingPhraseWrap}>
-        <p className={styles.closingPhrase}>Bienvenido a una red viva de lugares, anfitriones y experiencias de impacto regenerativo</p>
-        <button type="button" className={`${styles.btn} ${styles.btnBig}`} onClick={onComenzar}>
+        <h2 className={styles.sectionTitle}>¿Listo para comenzar?</h2>
+        <div className={styles.noticeList} style={{ marginTop: "1.25rem" }}>
+          <ul>
+            <li>No hay respuestas correctas o incorrectas.</li>
+            <li>La herramienta no constituye una certificación.</li>
+            <li>El propósito es reconocer fortalezas, contradicciones, brechas y posibilidades de evolución.</li>
+            <li>Las respuestas deben reflejar la situación actual y no solamente las aspiraciones de la organización.</li>
+            <li>Se recomienda realizar el ejercicio individualmente y posteriormente contrastarlo con equipos, colaboradores y actores territoriales.</li>
+            <li>Se recomienda repetir el diagnóstico al menos una vez al año.</li>
+          </ul>
+        </div>
+        <button type="button" className={`${styles.btn} ${styles.btnBig}`} style={{ marginTop: "2rem" }} onClick={onComenzar}>
           Comenzar el autodiagnóstico
         </button>
+        <p className={styles.closingPhrase} style={{ marginTop: "2rem" }}>Bienvenido a una red viva de lugares, anfitriones y experiencias de impacto regenerativo</p>
       </div>
     </section>
   );

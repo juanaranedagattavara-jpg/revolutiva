@@ -10,6 +10,7 @@ const root = join(dirname(fileURLToPath(import.meta.url)), "..");
 const FOLDERS = [
   "Amalurra",
   "Cerro Guido",
+  "FlowMap",
   "KodKod",
   "La Baita",
   "Llama Trek",

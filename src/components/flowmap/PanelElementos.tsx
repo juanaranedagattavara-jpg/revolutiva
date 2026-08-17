@@ -11,7 +11,8 @@ export default function PanelElementos({ resultados }: { resultados: ResultadosC
 
   return (
     <>
-      <div className={styles.resultGrid}>
+      <h3 style={{ fontSize: "1.3rem" }}>FlowMap — Cuatro elementos</h3>
+      <div className={`${styles.resultGrid} ${styles.resultGridElementos}`}>
         {ORDEN_ELEMENTOS.map((key) => {
           const el = ELEMENTOS[key];
           const val = resultados.elementos[key];

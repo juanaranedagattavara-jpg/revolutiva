@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { createClient } from "@/lib/supabase/client";
 import { EVALUACIONES, PRINCIPIOS, RS, getNivel } from "@/lib/flowmap/data";
@@ -227,6 +228,16 @@ export default function FlowMapApp() {
               style={{ width: "auto", height: "40px" }}
             />
           </a>
+          <Link href="/">
+            <Image
+              src="/FlowMap/revolutiva-travel-logo.png"
+              alt="Revolutiva.travel — Evolucionar viajando"
+              width={500}
+              height={75}
+              className={styles.footerLogoRevolutiva}
+              style={{ width: "auto", height: "28px" }}
+            />
+          </Link>
         </div>
         <p className={styles.footerCredit}>
           El <strong>FlowMap de Turismo Regenerativo</strong> es una metodología desarrollada por{" "}
@@ -234,7 +245,7 @@ export default function FlowMapApp() {
           una comunidad internacional que acompaña a organizaciones, empresas y destinos turísticos en su camino
           hacia una relación más madura con la vida, el territorio y las personas.
         </p>
-        <p className={styles.footerLinks}>caminaconsultores.com · turismoregenerativo.org</p>
+        <p className={styles.footerLinks}>caminaconsultores.com · turismoregenerativo.org · revolutiva.travel</p>
       </footer>
 
       <div className={styles.saveIndicator}>
