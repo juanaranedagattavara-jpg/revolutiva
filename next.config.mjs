@@ -3,6 +3,12 @@ const nextConfig = {
   output: 'standalone',
   poweredByHeader: false,
   images: {
+    // El optimizador integrado (sharp + self-fetch interno) fallaba en el
+    // contenedor de producción para TODAS las imágenes locales ("internal
+    // image response is empty"), acumulando peticiones colgadas hasta dejar
+    // el servicio inalcanzable. Se sirven las imágenes tal cual mientras se
+    // resuelve el empaquetado de sharp en el build standalone.
+    unoptimized: true,
     remotePatterns: [
       {
         protocol: 'https',
