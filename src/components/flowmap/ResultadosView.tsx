@@ -55,7 +55,7 @@ export default function ResultadosView({
       </div>
 
       <div className={`${styles.btnRow} ${styles.noPrint}`}>
-        <button type="button" className={`${styles.btn} ${styles.btnDanger}`} onClick={() => setShowResetModal(true)}>Reiniciar diagnóstico</button>
+        <button type="button" className={`${styles.btn} ${styles.btnSecondary}`} onClick={() => setShowResetModal(true)}>Reiniciar diagnóstico</button>
         <button type="button" className={`${styles.btn} ${styles.btnGhost}`} onClick={onEditBack}>Volver a editar respuestas</button>
         <button type="button" className={`${styles.btn} ${styles.btnSecondary}`} onClick={onDownload}>Descargar diagnóstico</button>
       </div>

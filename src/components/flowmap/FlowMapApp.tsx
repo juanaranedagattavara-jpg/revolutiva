@@ -135,14 +135,22 @@ export default function FlowMapApp() {
     <div className={styles.app}>
       <header className={styles.appHeader}>
         <div className={styles.appHeaderInner}>
-          <Image
-            src="https://turismoregenerativo.org/v4/wp-content/uploads/elementor/thumbs/Logo-TR-1000-qz56jyib1wtdhze387v6ovpgw6mkrqdo09uazlxkwe.png"
-            alt="Turismo Regenerativo"
-            width={140}
-            height={58}
-            className={styles.headerLogo}
-            style={{ width: "auto", height: "58px", filter: "brightness(0) invert(1) drop-shadow(0 2px 8px rgba(0,0,0,0.3))" }}
-          />
+          <a
+            href="https://www.turismoregenerativo.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.headerLogoLink}
+            aria-label="Visitar turismoregenerativo.org"
+          >
+            <Image
+              src="https://turismoregenerativo.org/v4/wp-content/uploads/elementor/thumbs/Logo-TR-1000-qz56jyib1wtdhze387v6ovpgw6mkrqdo09uazlxkwe.png"
+              alt="Turismo Regenerativo"
+              width={230}
+              height={96}
+              className={styles.headerLogo}
+              style={{ width: "auto", height: "96px", filter: "brightness(0) invert(1) drop-shadow(0 2px 8px rgba(0,0,0,0.3))" }}
+            />
+          </a>
           <div>
             <h1>FLOWMAP DE TURISMO REGENERATIVO</h1>
             <p className={styles.subtitle}>Autodiagnóstico para Organizaciones Vivas</p>
