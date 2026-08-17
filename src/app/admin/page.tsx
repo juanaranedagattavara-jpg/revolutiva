@@ -4,12 +4,13 @@ import { createClient } from "@/lib/supabase/server";
 export default async function AdminDashboard() {
   const supabase = await createClient();
 
-  const [{ count: totalListings }, { count: publishedListings }, { count: newLeads }, { count: pendingPostulations }] =
+  const [{ count: totalListings }, { count: publishedListings }, { count: newLeads }, { count: pendingPostulations }, { count: newFlowmap }] =
     await Promise.all([
       supabase.from("listings").select("*", { count: "exact", head: true }),
       supabase.from("listings").select("*", { count: "exact", head: true }).eq("published", true),
       supabase.from("leads").select("*", { count: "exact", head: true }).eq("status", "nuevo"),
       supabase.from("postulations").select("*", { count: "exact", head: true }).eq("status", "recibida"),
+      supabase.from("flowmap_diagnosticos").select("*", { count: "exact", head: true }).eq("status", "nuevo"),
     ]);
 
   const cards = [
@@ -17,6 +18,7 @@ export default async function AdminDashboard() {
     { label: "Listings publicados", value: publishedListings ?? 0, href: "/admin/listings" },
     { label: "Leads nuevos", value: newLeads ?? 0, href: "/admin/leads" },
     { label: "Postulaciones por revisar", value: pendingPostulations ?? 0, href: "/admin/postulaciones" },
+    { label: "Diagnósticos FlowMap nuevos", value: newFlowmap ?? 0, href: "/admin/flowmap" },
   ];
 
   return (

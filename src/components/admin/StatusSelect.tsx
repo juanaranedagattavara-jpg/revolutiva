@@ -9,7 +9,7 @@ export default function StatusSelect({
   value,
   options,
 }: {
-  table: "leads" | "postulations";
+  table: "leads" | "postulations" | "flowmap_diagnosticos";
   id: string;
   value: string;
   options: { value: string; label: string }[];

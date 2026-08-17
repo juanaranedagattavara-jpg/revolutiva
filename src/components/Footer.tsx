@@ -90,6 +90,9 @@ export default function Footer() {
                 <Link href="/mentoria">Modelo comercial</Link>
               </li>
               <li>
+                <Link href="/flowmap">FlowMap · Autodiagnóstico</Link>
+              </li>
+              <li>
                 <a href="https://turismoregenerativo.org/" target="_blank" rel="noopener">
                   Sitio IGTR ↗
                 </a>

@@ -1,3 +1,5 @@
+import type { Respuestas } from "./flowmap/types";
+
 export type ListingCategory = "experiencia" | "hospedaje" | "guiado";
 export type RelationType = "conmigo" | "comunidad" | "naturaleza" | "integral";
 export type RState = "inicial" | "desarrollo" | "enraizado";
@@ -8,6 +10,7 @@ export type PostulationStatus =
   | "aprobada"
   | "rechazada"
   | "en_mentoria";
+export type FlowmapStatus = "nuevo" | "en_revision" | "contactado" | "archivado";
 
 export interface RDims {
   R1: RState;
@@ -152,6 +155,26 @@ export interface Postulation {
   status: PostulationStatus;
   notas_admin: string | null;
   nivel_asignado: 1 | 2 | 3 | null;
+  created_at: string;
+  updated_at: string;
+}
+
+export interface FlowmapDiagnostico {
+  id: string;
+  organizacion: string | null;
+  tipo_organizacion: string | null;
+  persona: string | null;
+  cargo: string | null;
+  email: string;
+  whatsapp: string | null;
+  territorio: string | null;
+  fecha_diagnostico: string | null;
+  modalidad: string | null;
+  respuestas: Respuestas;
+  promedio_general: number | null;
+  nivel_general: string | null;
+  status: FlowmapStatus;
+  notas_admin: string | null;
   created_at: string;
   updated_at: string;
 }

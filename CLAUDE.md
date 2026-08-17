@@ -24,14 +24,16 @@ Revolutiva-/
 │   │   ├── [cat]/[slug]/                         ← detalle de listing (SSR + ISR 3600s)
 │   │   ├── principios/ niveles/ indicadores/ mentoria/  ← páginas estáticas de contenido IGTR
 │   │   ├── postular/                             ← formulario de postulación
-│   │   ├── admin/                                ← panel admin (auth-gated por middleware)
+│   │   ├── flowmap/                              ← autodiagnóstico FlowMap (herramienta de Camina Consultores/IGTR), 100% client, sin dependencia de Supabase para renderizar
+│   │   ├── admin/                                ← panel admin (auth-gated por middleware), incluye admin/flowmap/ (listado + detalle de diagnósticos)
 │   │   ├── sitemap.ts, robots.ts
-│   ├── components/          ← ListingCard, RPanel, RChips, BookingSidebar, LeadFormModal, admin/*, etc.
+│   ├── components/          ← ListingCard, RPanel, RChips, BookingSidebar, LeadFormModal, admin/*, flowmap/*, etc.
 │   ├── lib/
 │   │   ├── supabase/        ← client.ts (browser), server.ts (RSC), admin.ts (service role), middleware.ts
 │   │   ├── constants.ts     ← TIPOS_EXP, RELACIONES, R_DIMS, NIVELES, ST, CAT_META
-│   │   ├── types.ts         ← tipos TS que reflejan el schema de `listings`
-│   │   └── queries.ts       ← queries server-side reusables
+│   │   ├── types.ts         ← tipos TS que reflejan el schema de `listings`/`leads`/`postulations`/`flowmap_diagnosticos`
+│   │   ├── queries.ts       ← queries server-side reusables
+│   │   └── flowmap/         ← data.ts (16 principios/4 elementos/5 R, contenido estático del cuestionario), scoring.ts (motor de cálculo), types.ts, useFlowMapState.ts (estado + localStorage)
 │   └── middleware.ts        ← gate de /admin/*
 ├── supabase/
 │   ├── seed.sql              ← seed generado (11 listings + tipos_experiencia)
@@ -59,6 +61,7 @@ Proyecto Supabase: **Revolutiva** (`bcnuuqhytnqqetjqkpra`, org `hndrjlnobxthtlij
 - **`leads`** — consultas de visitantes (botones "Pedir cotización", etc. en el detalle). Cualquiera puede insertar (`INSERT`); solo admin lee/actualiza.
 - **`postulations`** — postulaciones del formulario `/postular`. Mismo patrón de RLS que `leads`.
 - **`tipos_experiencia`** — catálogo de tipos (lookup), poblado con los 17 valores de `TIPOS_EXP`.
+- **`flowmap_diagnosticos`** — autodiagnósticos completados en `/flowmap` (herramienta FlowMap de Camina Consultores/IGTR: 16 principios en 4 elementos, reinterpretados en 5 R). `respuestas JSONB` (`{principioId: {escala 0-7, texto}}`) + `promedio_general`/`nivel_general` calculados al enviar, como resumen para listar en admin sin recalcular. Mismo patrón de RLS que `leads`/`postulations`. El progreso del cuestionario se autoguarda solo en `localStorage` del visitante (no hay edición remota); recién se inserta una fila al completar las 16 evaluaciones y calcular resultados — cada envío es una fila nueva, no hay UPDATE desde el cliente.
 
 `is_admin()` es una función `SECURITY DEFINER` que chequea `raw_user_meta_data->>'role' = 'admin'` sobre `auth.uid()`. **No hay usuarios públicos** — solo 1-2 cuentas admin de la IGTR, creadas manualmente en el Supabase Dashboard con `role: 'admin'` en los metadata del usuario.
 
