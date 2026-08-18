@@ -16,6 +16,8 @@ export default function Header() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
 
+  if (pathname?.startsWith("/flowmap")) return null;
+
   return (
     <header className="nav">
       <div className="wrap nav-inner">
