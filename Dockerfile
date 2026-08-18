@@ -33,4 +33,27 @@ COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
 USER nextjs
 EXPOSE 3000
 ENV PORT=3000
+
+# Cap V8's heap explicitly. Without this, Node sizes the default heap off
+# whatever memory it can see (which on some hosts/orchestrators is NOT the
+# same as the container's actual cgroup memory limit), so it can happily
+# grow past a low EasyPanel "Memory Limit" and get SIGKILLed by the kernel
+# OOM killer with zero log output — exactly the silent, sub-second
+# restart-loop symptom this project hit in production. With a limit set,
+# an out-of-memory condition instead throws a loud, logged
+# "JavaScript heap out of memory" error before the process dies, and Node
+# never even attempts to grow past it. 460 assumes a >=512MB EasyPanel
+# Memory Limit for this service — if that limit is raised/lowered, adjust
+# this value to stay a bit below it (EasyPanel: Environment tab, this can
+# be overridden at runtime without rebuilding the image).
+ENV NODE_OPTIONS="--max-old-space-size=460"
+
+# Self-consistent with whatever PORT is actually injected at runtime (Next's
+# standalone server.js reads process.env.PORT, and EasyPanel may override
+# the ENV PORT=3000 default above) — avoids the healthcheck silently
+# probing the wrong port if EasyPanel's dashboard "Port" setting drifts
+# from what the container really listens on.
+HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
+  CMD wget -qO- "http://127.0.0.1:${PORT}/" || exit 1
+
 CMD ["node", "server.js"]
