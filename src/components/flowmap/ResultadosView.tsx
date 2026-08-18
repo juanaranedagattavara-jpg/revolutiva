@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { DatosIniciales, ResultadosCompletos, Respuestas, RId } from "@/lib/flowmap/types";
 import ModalTrazabilidad from "./ModalTrazabilidad";
 import PanelCuaderno from "./PanelCuaderno";
@@ -40,6 +40,18 @@ export default function ResultadosView({
   const [tab, setTab] = useState<TabId>("sintesis");
   const [modalR, setModalR] = useState<RId | null>(null);
   const [showResetModal, setShowResetModal] = useState(false);
+  const [incluirCuadernoImpresion, setIncluirCuadernoImpresion] = useState(true);
+
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key === "Escape") {
+        setShowResetModal(false);
+        setModalR(null);
+      }
+    }
+    document.addEventListener("keydown", onKeyDown);
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   return (
     <section className={`${styles.view} ${active ? styles.active : ""}`} aria-labelledby="resultados-title">
@@ -54,7 +66,7 @@ export default function ResultadosView({
         ))}
       </div>
 
-      <div className={`${styles.btnRow} ${styles.noPrint}`}>
+      <div className={`${styles.btnRow} ${styles.noPrint} ${styles.resultsBtnRow}`}>
         <button type="button" className={`${styles.btn} ${styles.btnSecondary}`} onClick={() => setShowResetModal(true)}>Reiniciar diagnóstico</button>
         <button type="button" className={`${styles.btn} ${styles.btnGhost}`} onClick={onEditBack}>Volver a editar respuestas</button>
         <button type="button" className={`${styles.btn} ${styles.btnSecondary}`} onClick={onDownload}>Descargar diagnóstico</button>
@@ -70,8 +82,12 @@ export default function ResultadosView({
         <div className={`${styles.resultsPanel} ${tab === "rs" ? styles.active : ""}`}>
           <PanelRs resultados={resultados} onAbrirModal={setModalR} />
         </div>
-        <div className={`${styles.resultsPanel} ${tab === "cuaderno" ? styles.active : ""}`}>
-          <PanelCuaderno respuestas={respuestas} />
+        <div className={`${styles.resultsPanel} ${tab === "cuaderno" ? styles.active : ""} ${incluirCuadernoImpresion ? "" : styles.noPrint}`}>
+          <PanelCuaderno
+            respuestas={respuestas}
+            incluirEnImpresion={incluirCuadernoImpresion}
+            onToggleIncluirEnImpresion={setIncluirCuadernoImpresion}
+          />
         </div>
         <div className={`${styles.resultsPanel} ${tab === "matriz" ? styles.active : ""}`}>
           <PanelMatriz resultados={resultados} />

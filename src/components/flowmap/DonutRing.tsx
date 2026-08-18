@@ -19,7 +19,7 @@ export default function DonutRing({
   const c = 2 * Math.PI * r;
   const offset = c - (pctValue / 100) * c;
   return (
-    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} role="img" aria-label={`${pctValue}% de avance`}>
+    <svg className="donut-ring" width={size} height={size} viewBox={`0 0 ${size} ${size}`} role="img" aria-label={`${pctValue}% de avance`}>
       <circle cx={size / 2} cy={size / 2} r={r} fill="none" stroke={trackColor} strokeWidth={stroke} />
       <circle
         cx={size / 2}

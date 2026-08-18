@@ -25,6 +25,7 @@ type TabId = (typeof TABS)[number]["id"];
 export default function AdminFlowmapResultView({ datosIniciales, respuestas }: { datosIniciales: DatosIniciales; respuestas: Respuestas }) {
   const [tab, setTab] = useState<TabId>("sintesis");
   const [modalR, setModalR] = useState<RId | null>(null);
+  const [incluirCuadernoImpresion, setIncluirCuadernoImpresion] = useState(true);
   const resultados = calcularResultadosCompletos(respuestas);
 
   return (
@@ -40,7 +41,13 @@ export default function AdminFlowmapResultView({ datosIniciales, respuestas }: {
         {tab === "sintesis" && <PanelSintesis resultados={resultados} datosIniciales={datosIniciales} />}
         {tab === "elementos" && <PanelElementos resultados={resultados} />}
         {tab === "rs" && <PanelRs resultados={resultados} onAbrirModal={setModalR} />}
-        {tab === "cuaderno" && <PanelCuaderno respuestas={respuestas} />}
+        {tab === "cuaderno" && (
+          <PanelCuaderno
+            respuestas={respuestas}
+            incluirEnImpresion={incluirCuadernoImpresion}
+            onToggleIncluirEnImpresion={setIncluirCuadernoImpresion}
+          />
+        )}
         {tab === "matriz" && <PanelMatriz resultados={resultados} />}
       </div>
       <ModalTrazabilidad rId={modalR} resultados={resultados} respuestas={respuestas} onClose={() => setModalR(null)} />

@@ -5,7 +5,15 @@ import { ELEMENTOS, ESCALA_SIGNIFICADOS, ORDEN_ELEMENTOS, PRINCIPIOS } from "@/l
 import type { Respuestas } from "@/lib/flowmap/types";
 import styles from "./flowmap.module.css";
 
-export default function PanelCuaderno({ respuestas }: { respuestas: Respuestas }) {
+export default function PanelCuaderno({
+  respuestas,
+  incluirEnImpresion,
+  onToggleIncluirEnImpresion,
+}: {
+  respuestas: Respuestas;
+  incluirEnImpresion: boolean;
+  onToggleIncluirEnImpresion: (value: boolean) => void;
+}) {
   const [buscar, setBuscar] = useState("");
   const term = buscar.toLowerCase().trim();
 
@@ -20,6 +28,14 @@ export default function PanelCuaderno({ respuestas }: { respuestas: Respuestas }
           value={buscar}
           onChange={(e) => setBuscar(e.target.value)}
         />
+        <label style={{ fontSize: ".85rem", display: "flex", alignItems: "center", gap: ".4rem" }}>
+          <input
+            type="checkbox"
+            checked={incluirEnImpresion}
+            onChange={(e) => onToggleIncluirEnImpresion(e.target.checked)}
+          />
+          Incluir en la impresión
+        </label>
         <button type="button" className={`${styles.btn} ${styles.btnSecondary}`} onClick={() => window.print()}>
           Imprimir cuaderno
         </button>
