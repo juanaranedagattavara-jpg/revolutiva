@@ -135,9 +135,9 @@ export default function PrincipiosPage() {
           <div className="eyebrow" style={{ textAlign: "center", marginBottom: "10px" }}>
             Metodología IGTR
           </div>
-          <h2 style={{ textAlign: "center", margin: "0 auto 12px" }}>Los cinco principios del turismo regenerativo</h2>
+          <h2 style={{ textAlign: "center", margin: "0 auto 12px" }}>Los seis principios del turismo regenerativo</h2>
           <p style={{ textAlign: "center", fontSize: "1.05rem", color: "var(--ink-soft)", maxWidth: "580px", margin: "0 auto 36px" }}>
-            Cinco ejes que, cuando actúan juntos, convierten el viaje en un acto de regeneración.
+            Seis ejes que, cuando actúan juntos, convierten el viaje en un acto de regeneración.
           </p>
           <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit,minmax(250px,1fr))", gap: "18px" }}>
             <PCard color="var(--forest)" title="La vida en el centro" text="Toda decisión se toma evaluando su impacto en los sistemas vivos: humanos, naturales y culturales." />
@@ -145,6 +145,7 @@ export default function PrincipiosPage() {
             <PCard color="var(--terra)" title="Sentido del lugar" text="Cada territorio tiene una identidad propia, ritmos, memorias y saberes. El viaje regenerativo la devela y la honra." />
             <PCard color="var(--forest)" title="Las tres relaciones" text="Contigo, con los demás y con la naturaleza. Cuando las tres relaciones están vivas, el viaje regenera." />
             <PCard color="var(--moss)" title="Experiencias de valor" text="El viaje regenerativo crea valor genuino para viajero, comunidad y territorio — no lo extrae ni lo simula." />
+            <PCard color="var(--terra)" title="Hospitalidad profunda" text="El viaje convierte al extraño en alguien familiar. La hospitalidad nace de las personas, la cultura y la naturaleza que reciben, y se vuelve acogida, pertenencia y conexión genuina con el lugar." />
           </div>
         </div>
       </section>

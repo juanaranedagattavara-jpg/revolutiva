@@ -48,8 +48,8 @@ export default async function HomePage() {
             <div className="eyebrow">No es un marketplace de tours</div>
             <h2>Una red viva de lugares, anfitriones y experiencias con sentido</h2>
             <p className="lead">
-              Cada proyecto aquí cuida tres relaciones esenciales. No buscamos volumen ni descuentos:
-              buscamos viajes que transforman al viajero, al territorio y a quien recibe.
+              Somos la plataforma B2B que conecta a lugares, anfitriones y experiencias con propósito
+              para crear una red viva de colaboración.
             </p>
           </div>
           <div className="relations">
@@ -129,7 +129,7 @@ export default async function HomePage() {
       <section>
         <div className="wrap band" style={{ padding: "64px 56px" }}>
           <div style={{ maxWidth: "720px" }}>
-            <div className="eyebrow">Indicadores R · contra el greenwashing</div>
+            <div className="eyebrow">Indicadores R · contra el Regenwashing</div>
             <h2>Cinco dimensiones para viajar con confianza</h2>
             <p className="lead" style={{ color: "#dde2d3" }}>
               Cada proyecto se evalúa con transparencia en cinco indicadores que miden cómo cuida las
@@ -159,8 +159,53 @@ export default async function HomePage() {
       </section>
 
       <section style={{ paddingTop: 0 }}>
+        <div className="wrap">
+          <div className="sec-head" style={{ maxWidth: "720px" }}>
+            <h2>Proceso de Validación</h2>
+            <p className="lead">
+              Formación, diagnóstico, curaduría especializada y validación de pares: un camino honesto y
+              verificable hacia la regeneración, no un sello estático.
+            </p>
+          </div>
+          <div className="pv-flat">
+            <div className="pv-flat-row">
+              <div className="pv-flat-step">
+                <div className="pv-flat-icon">1</div>
+                <h4>Formación certificada</h4>
+              </div>
+              <div className="pv-flat-connector" />
+              <div className="pv-flat-step">
+                <div className="pv-flat-icon">2</div>
+                <h4>Diagnóstico FlowMap</h4>
+              </div>
+              <div className="pv-flat-connector" />
+              <div className="pv-flat-step">
+                <div className="pv-flat-icon">3</div>
+                <h4>Curaduría especializada</h4>
+              </div>
+            </div>
+            <div className="pv-flat-row row2">
+              <div className="pv-flat-step">
+                <div className="pv-flat-icon">4</div>
+                <h4>Validación de pares</h4>
+              </div>
+              <div className="pv-flat-connector" />
+              <div className="pv-flat-step">
+                <div className="pv-flat-icon">5</div>
+                <h4>Revolutiva.Travel</h4>
+              </div>
+            </div>
+          </div>
+          <div style={{ marginTop: "28px", textAlign: "center" }}>
+            <Link href="/indicadores" className="btn btn-terra">
+              Ver el Proceso de Validación completo
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      <section style={{ paddingTop: 0 }}>
         <div className="wrap center" style={{ maxWidth: "820px" }}>
-          <span className="pill-note reveal">Para proyectos y territorios</span>
           <div className="quote center reveal" style={{ margin: "22px auto 26px" }}>
             &quot;Esta plataforma no busca proyectos perfectos. Busca proyectos honestos, enraizados y
             dispuestos a evolucionar.&quot;

@@ -259,6 +259,38 @@ section{padding:84px 0}
 .rdim h4{font-family:'Inter';font-weight:600;font-size:1rem;margin:.4em 0}
 .rdim p{font-size:.85rem;color:var(--ink-soft);margin:0}
 
+/* Proceso de Validación */
+.pv-block{margin-top:56px;background:var(--bg-2);border-radius:var(--radius);padding:36px 34px}
+.pv-card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:34px 32px}
+.pv-row{display:flex;gap:22px}
+.pv-rail{display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:46px}
+.pv-icon{width:46px;height:46px;border-radius:50%;background:var(--forest);color:var(--card);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pv-icon.terra{background:var(--terra)}
+.pv-num{font-family:'Fraunces';font-size:.72rem;color:var(--terra);margin-bottom:2px}
+.pv-line{width:1px;flex:1;min-height:30px;background:var(--sand);margin:8px 0}
+.pv-content{padding-bottom:28px;padding-top:2px}
+.pv-content h4{font-family:'Fraunces';font-weight:500;font-size:1.05rem;margin:0 0 6px}
+.pv-content p{font-size:.9rem;color:var(--ink-soft);line-height:1.6;margin:0}
+.pv-content .pv-tag{font-style:italic;color:var(--forest);margin-top:8px;font-size:.88rem}
+.pv-chain{text-align:center;text-transform:uppercase;letter-spacing:.1em;font-size:.72rem;color:var(--muted);font-weight:600;margin-top:4px;line-height:1.8}
+.pv-loop{display:flex;align-items:center;justify-content:center;gap:6px;margin-top:16px;color:var(--terra)}
+.pv-foot{display:flex;align-items:center;gap:28px;margin-top:30px;flex-wrap:wrap}
+@media(max-width:560px){.pv-chain{letter-spacing:.02em;font-size:.64rem}}
+
+/* Proceso de Validación — versión slalom (Home) */
+.pv-flat{margin-top:34px}
+.pv-flat-row{display:flex;align-items:flex-start}
+.pv-flat-row.row2{max-width:340px;margin:36px auto 0}
+.pv-flat-step{display:flex;flex-direction:column;align-items:center;gap:10px;width:120px;text-align:center}
+.pv-flat-icon{width:46px;height:46px;border-radius:50%;background:var(--forest);color:#fff;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-family:'Inter';font-weight:600;font-size:1.05rem}
+.pv-flat-step h4{font-family:'Fraunces';font-weight:500;font-size:.92rem;margin:0;line-height:1.3}
+.pv-flat-connector{flex:1;height:1px;margin-top:22px;min-width:20px;background:repeating-linear-gradient(90deg,var(--sand) 0 6px,transparent 6px 12px)}
+@media(max-width:560px){
+  .pv-flat-row{flex-wrap:wrap;row-gap:20px}
+  .pv-flat-connector{display:none}
+  .pv-flat-row.row2{max-width:100%}
+}
+
 /* ---------- Forms ---------- */
 .form-wrap{max-width:760px;margin:0 auto}
 .field{margin-bottom:22px}
@@ -839,7 +871,7 @@ function viewHome(){
       <div class="sec-head center reveal">
         <div class="eyebrow">No es un marketplace de tours</div>
         <h2>Una red viva de lugares, anfitriones y experiencias con sentido</h2>
-        <p class="lead">Cada proyecto aquí cuida tres relaciones esenciales. No buscamos volumen ni descuentos: buscamos viajes que transforman al viajero, al territorio y a quien recibe.</p>
+        <p class="lead">Somos la plataforma B2B que conecta a lugares, anfitriones y experiencias con propósito para crear una red viva de colaboración.</p>
       </div>
       <div class="relations">
         <div class="rel-card rel-1 reveal">
@@ -900,7 +932,7 @@ function viewHome(){
   <section>
     <div class="wrap band" style="padding:64px 56px">
       <div style="max-width:720px">
-        <div class="eyebrow">Indicadores R · contra el greenwashing</div>
+        <div class="eyebrow">Indicadores R · contra el Regenwashing</div>
         <h2>Cinco dimensiones para viajar con confianza</h2>
         <p class="lead" style="color:#dde2d3">Cada proyecto se evalúa con transparencia en cinco indicadores que miden cómo cuida las tres relaciones. Nada de sellos vacíos: evidencias simples, claras y honestas.</p>
       </div>
@@ -920,8 +952,33 @@ function viewHome(){
   </section>
 
   <section style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head" style="max-width:720px">
+        <h2>Proceso de Validación</h2>
+        <p class="lead">Formación, diagnóstico, curaduría especializada y validación de pares: un camino honesto y verificable hacia la regeneración, no un sello estático.</p>
+      </div>
+      <div class="pv-flat">
+        <div class="pv-flat-row">
+          <div class="pv-flat-step"><div class="pv-flat-icon">1</div><h4>Formación certificada</h4></div>
+          <div class="pv-flat-connector"></div>
+          <div class="pv-flat-step"><div class="pv-flat-icon">2</div><h4>Diagnóstico FlowMap</h4></div>
+          <div class="pv-flat-connector"></div>
+          <div class="pv-flat-step"><div class="pv-flat-icon">3</div><h4>Curaduría especializada</h4></div>
+        </div>
+        <div class="pv-flat-row row2">
+          <div class="pv-flat-step"><div class="pv-flat-icon">4</div><h4>Validación de pares</h4></div>
+          <div class="pv-flat-connector"></div>
+          <div class="pv-flat-step"><div class="pv-flat-icon">5</div><h4>Revolutiva.Travel</h4></div>
+        </div>
+      </div>
+      <div style="margin-top:28px;text-align:center">
+        <button class="btn btn-terra" onclick="go('indicadores')">Ver el Proceso de Validación completo</button>
+      </div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
     <div class="wrap center" style="max-width:820px">
-      <span class="pill-note reveal">Para proyectos y territorios</span>
       <div class="quote center reveal" style="margin:22px auto 26px">"Esta plataforma no busca proyectos perfectos. Busca proyectos honestos, enraizados y dispuestos a evolucionar."</div>
       <div class="hero-actions" style="justify-content:center">
         <button class="btn btn-primary" onclick="go('postular')">Postula tu proyecto</button>
@@ -1371,14 +1428,15 @@ function viewPrincipios(){
   <section style="background:var(--cream);padding:64px 0">
     <div class="wrap" style="max-width:900px">
       <div class="eyebrow" style="text-align:center;margin-bottom:10px">Metodología IGTR</div>
-      <h2 style="text-align:center;margin:0 auto 12px">Los cinco principios del turismo regenerativo</h2>
-      <p style="text-align:center;font-size:1.05rem;color:var(--ink-soft);max-width:580px;margin:0 auto 36px">Cinco ejes que, cuando actúan juntos, convierten el viaje en un acto de regeneración.</p>
+      <h2 style="text-align:center;margin:0 auto 12px">Los seis principios del turismo regenerativo</h2>
+      <p style="text-align:center;font-size:1.05rem;color:var(--ink-soft);max-width:580px;margin:0 auto 36px">Seis ejes que, cuando actúan juntos, convierten el viaje en un acto de regeneración.</p>
       <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px">
         ${pcard('var(--forest)','La vida en el centro','Toda decisión se toma evaluando su impacto en los sistemas vivos: humanos, naturales y culturales.')}
         ${pcard('var(--moss)','Coherencia ética y estética','Lo bello y lo bueno no se separan. La forma del viaje refleja sus valores: el cómo importa tanto como el qué.')}
         ${pcard('var(--terra)','Sentido del lugar','Cada territorio tiene una identidad propia, ritmos, memorias y saberes. El viaje regenerativo la devela y la honra.')}
         ${pcard('var(--forest)','Las tres relaciones','Contigo, con los demás y con la naturaleza. Cuando las tres relaciones están vivas, el viaje regenera.')}
         ${pcard('var(--moss)','Experiencias de valor','El viaje regenerativo crea valor genuino para viajero, comunidad y territorio — no lo extrae ni lo simula.')}
+        ${pcard('var(--terra)','Hospitalidad profunda','El viaje convierte al extraño en alguien familiar. La hospitalidad nace de las personas, la cultura y la naturaleza que reciben, y se vuelve acogida, pertenencia y conexión genuina con el lugar.')}
       </div>
     </div>
   </section>
@@ -1456,7 +1514,7 @@ function viewIndicadores(){
   <section style="padding:60px 0 30px">
     <div class="wrap">
       <div style="margin-bottom:40px">
-        <div class="eyebrow" style="margin-bottom:10px">Contra el greenwashing</div>
+        <div class="eyebrow" style="margin-bottom:10px">Contra el Regenwashing</div>
         <h2 style="margin:0 0 14px">Las 5 dimensiones R</h2>
         <p class="lead" style="margin:0">Las 5 dimensiones R permiten observar, más allá del discurso y las declaraciones de intención, cómo el propósito regenerativo se expresa en las decisiones y prácticas concretas de un proyecto. Esta mirada aporta honestidad, transparencia y coherencia, y permite reconocer fortalezas, brechas y capacidades de evolución dentro de un proceso vivo y continuo, afinando propósitos, experiencias y acciones.</p>
       </div>
@@ -1481,15 +1539,94 @@ function viewIndicadores(){
           </div>`).join('')}
       </div>
 
-      <div style="margin-top:56px;background:var(--bg-2);border-radius:var(--radius);padding:32px;display:grid;grid-template-columns:1fr 320px;gap:40px;align-items:start">
-        <div>
-          <p style="margin:0 0 28px;font-size:.97rem;line-height:1.7;color:var(--ink-soft)">Proceso acompañado y verificado por la IGTR mediante un diagnóstico basado en FlowMap, metodología regenerativa para organizaciones vivas, complementado con revisión de pares y curaduría especializada. Más que evaluar, invita a recorrer un proceso vivo y continuo de evolución hacia la regeneración.</p>
-          <a href="https://www.turismoregenerativo.org" target="_blank" rel="noopener">
-            <img src="./Logos/Logo TR.png" alt="IGTR · Turismo Regenerativo" style="width:100%;max-width:280px;object-fit:contain;display:block">
-          </a>
+      <div class="pv-block">
+        <h2 style="margin-bottom:14px">Proceso de Validación</h2>
+        <p style="margin:0 0 14px;font-size:.97rem;line-height:1.7;color:var(--ink-soft);max-width:820px">Proceso acompañado para fortalecer y transformar iniciativas de turismo hacia la regeneración. La IGTR combina <b>formación, diagnóstico, curaduría especializada y validación de pares</b> para asegurar una base común, reconocer el nivel de avance de cada proyecto y orientar su evolución.</p>
+        <p style="margin:0 0 28px;font-size:.97rem;line-height:1.7;color:var(--ink-soft);max-width:820px">Más que certificar un estado final, el proceso busca entregar una <b>dirección de viaje clara, honesta y verificable</b>, fortaleciendo la coherencia entre propósito, prácticas, experiencia y territorio, y conectando a las iniciativas validadas con el ecosistema comercial de la <b>Iniciativa Global de Turismo Regenerativo</b>.</p>
+
+        <div class="pv-card">
+          <div class="pv-list">
+
+            <div class="pv-row">
+              <div class="pv-rail">
+                <div class="pv-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5.2c2.5-1 5-1 8 .3v13.3c-3-1.3-5.5-1.3-8-.3z"/><path d="M20 5.2c-2.5-1-5-1-8 .3v13.3c3-1.3 5.5-1.3 8-.3z"/></svg></div>
+                <div class="pv-line"></div>
+              </div>
+              <div class="pv-content">
+                <div class="pv-num">01</div>
+                <h4>Formación certificada</h4>
+                <p>Contar con formación en <b>Turismo Regenerativo</b> asegura una base compartida de conceptos, competencias, principios y aprendizajes desde la cual comenzar el proceso.</p>
+                <p class="pv-tag">Base común para avanzar.</p>
+              </div>
+            </div>
+
+            <div class="pv-row">
+              <div class="pv-rail">
+                <div class="pv-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"/><circle cx="12" cy="10" r="2.3"/></svg></div>
+                <div class="pv-line"></div>
+              </div>
+              <div class="pv-content">
+                <div class="pv-num">02</div>
+                <h4>Diagnóstico FlowMap</h4>
+                <p>El proyecto se mira a sí mismo: su <b>identidad, propósito, relaciones, prácticas, procesos y vínculo con el territorio</b>, reconociendo fortalezas, brechas y oportunidades de evolución.</p>
+                <p class="pv-tag">Comprender dónde estamos y hacia dónde podemos evolucionar.</p>
+              </div>
+            </div>
+
+            <div class="pv-row">
+              <div class="pv-rail">
+                <div class="pv-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 20c0-8.3 5.2-14.3 14.3-15.3C18.3 13.8 13.3 19 5 20z"/><path d="M6.2 18.8c3-3.2 6-7.4 8-11.6"/></svg></div>
+                <div class="pv-line"></div>
+              </div>
+              <div class="pv-content">
+                <div class="pv-num">03</div>
+                <h4>Curaduría especializada</h4>
+                <p>El equipo de la IGTR acompaña la lectura del diagnóstico, profundiza los aspectos relevantes y orienta mejoras que permitan fortalecer la coherencia y el potencial regenerativo de la propuesta.</p>
+                <p class="pv-tag">Acompañar la evolución y fortalecer la propuesta.</p>
+              </div>
+            </div>
+
+            <div class="pv-row">
+              <div class="pv-rail">
+                <div class="pv-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8.5" r="3"/><path d="M3.5 20c0-3.4 2.5-6 5.5-6s5.5 2.6 5.5 6"/><circle cx="17" cy="9.5" r="2.3"/><path d="M15.3 14.3c2.3.5 4.2 2.6 4.2 5.7"/></svg></div>
+                <div class="pv-line"></div>
+              </div>
+              <div class="pv-content">
+                <div class="pv-num">04</div>
+                <h4>Validación de pares</h4>
+                <p>Otros proyectos y practicantes del ecosistema regenerativo contrastan lo declarado con lo observado, aportando una mirada externa, situada y basada en la experiencia.</p>
+                <p class="pv-tag">Validar desde la comunidad y el aprendizaje entre pares.</p>
+              </div>
+            </div>
+
+            <div class="pv-row">
+              <div class="pv-rail">
+                <div class="pv-icon terra"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6.5" r="2.2"/><circle cx="18" cy="6.5" r="2.2"/><circle cx="12" cy="18" r="2.2"/><path d="M7.8 7.8 10.3 16"/><path d="M16.2 7.8 13.7 16"/><path d="M8.2 6.5h7.6"/></svg></div>
+              </div>
+              <div class="pv-content" style="padding-bottom:6px">
+                <div class="pv-num">05</div>
+                <h4>Integración a Revolutiva.Travel</h4>
+                <p>Las iniciativas que completan el proceso pasan a formar parte de <b>Revolutiva.Travel</b>, plataforma B2B de la Iniciativa Global de Turismo Regenerativo que conecta propuestas validadas con operadores, aliados, mercados y oportunidades de colaboración.</p>
+                <p class="pv-tag">Del proceso de transformación a la conexión con el mundo.</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="pv-chain">Formación → Diagnóstico → Curaduría → Validación de pares → Revolutiva.Travel</div>
+          <div class="pv-loop">
+            <span style="font-size:.9rem">↳</span>
+            <span class="serif-it" style="font-size:.85rem">evolución continua</span>
+          </div>
         </div>
-        <div>
-          ${rPanel({R1:'desarrollo',R2:'enraizado',R3:'inicial',R4:'desarrollo',R5:'desarrollo'})}
+
+        <div class="pv-foot">
+          <a href="https://www.turismoregenerativo.org" target="_blank" rel="noopener" style="flex-shrink:0">
+            <img src="./Logos/Logo TR.png" alt="IGTR · Turismo Regenerativo" style="width:160px;object-fit:contain;display:block">
+          </a>
+          <div style="flex:1;min-width:260px">
+            ${rPanel({R1:'desarrollo',R2:'enraizado',R3:'inicial',R4:'desarrollo',R5:'desarrollo'})}
+          </div>
         </div>
       </div>
     </div>
